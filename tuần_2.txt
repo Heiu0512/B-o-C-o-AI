@@ -1,0 +1,128 @@
+- học và tìm về giải thuật AT và AKT 
+
+
+## Report:
+
+#khái niệm:
+
+      Thuật giải AT (Algorithm for Tree):
+
+      Mỗi đỉnh n tương ứng với một số g(n): giá thành của đường
+      đi từ đỉnh ban đầu đến đỉnh n.
+
+      Đỉnh:
+
+      + Đỉnh đóng (Closed) : là những đỉnh đã được xem xét.
+
+      +Đỉnh mở (Open)
+      : là những đỉnh giả thiết sẽ được xem
+      xét ở bước sau.
+
+      + Đỉnh ẩn (Hiden)
+      : là những đỉnh mà tại đó hàm g(n)
+      chưa được xác định.
+
+- giải quyết được bài toán AT  bằng phương pháp  
+
+
+.Bước 1:
+
++ Mọi đỉnh n, mọi giá trị g(n) đều là ẩn.
+
++ Mở đỉnh đầu tiên và gọi đó là đỉnh S. Đặt g(S) = 0.
+
+.Bước 2 : Chọn đỉnh mở với giá thành g tương ứng là nhỏ nhất và gọi đó là
+đỉnh N.
+
++ Nếu N là mục tiêu: đường đi từ đỉnh ban đầu đến N là đường đi ngắn nhất
+và bằng g(N). Dừng (Success).
+
++ Nếu không tồn tại một đỉnh mở nào nữa: cây biểu diễn vấn đề không có
+đường đi tới mục tiêu. Dừng (Fail).
+
++ Nếu tồn tại nhiều hơn 1 đỉnh N (nghĩa là có 2 đỉnh N trở lên) mà có cùng giá
+thành g(N) nhỏ nhất. Kiểm tra xem trong số đó có đỉnh nào là đích hay
+không.
+
+Nếu có: đường đi từ đỉnh ban đầu đến đỉnh N là ngắn nhất và bằng g(N),
+dừng (Success).
+
+Nếu không có: Chọn ngẫu nhiên một trong các đỉnh đó và gọi là đỉnh N.
+
+.Bước 3: Đóng đỉnh N và mở các đỉnh sau N (là những đỉnh có cung hướng từ
+N tới). Tại mọi đỉnh S sau N tính :
+
+g(S) = g(N) + cost(N→S)
+
+.Bước 4: Quay lại bước 2
+
+
+
+
+
+#### Giải thuật AKT
+
+# Khái niệm:
+
+Thuật giải AT là thuật giải tìm kiếm đường đi tốt nhất đối với cây chỉ có các thông
+tin về đỉnh, cung và giá trị của cung. Trong nhiều trường hợp việc tìm kiếm
+đường đi sẽ được định hướng rõ thêm nếu sử dụng các tri thức thu được dựa
+trên các hiểu biết về tình huống vấn đề ở mỗi bước.
+
+Tri thức bổ sung ở mỗi đỉnh được tương ứng với một giá trị h(n). Chẳng hạn đó là
+ước lượng giá thành đường đi từ n đến mục tiêu. Ở ví dụ của giải thuật AT, ở
+bước đầu tiên :
+
+g(c) = g(d) = 1
+
+AT chọn tùy ý một trong hai đỉnh c và d để xét tiếp. Nhưng thay vì chọn tùy ý
+chúng ta có thể đặt câu hỏi “Đỉnh nào trong các đỉnh c và d gần mục tiêu hơn”,
+chúng ta ước lượng được:
+
+h(c) = 11
+
+h(d) = 4
+
+thì việc chọn đỉnh kế tiếp sẽ là d chứ không phải c.
+
+Do vậy tri thức bổ sung sẽ dựa trên cơ sở cực tiểu hóa giá thành f ở mỗi bước :
+
+f(n) = g(n) + h(n)
+
+# Phương pháp:
+
+.Bước 1:
+
+Mọi đỉnh, cũng như các hàm g, h, f chưa biết.
+
+Mở đỉnh đầu tiên S, gán g(S) = 0
+
+Sử dụng tri thức bổ sung để ước tính hàm h(S)
+
+Tính f(S) = g(S) + h(S)
+
+.Bước 2: Chọn đỉnh mở có f là nhỏ nhất và gọi là đỉnh N
+
+Nếu N là đích: đường đi từ đỉnh ban đầu đến đỉnh N là ngắn nhất và và bằng g(N). Dừng
+(Success).
+
+Nếu không tồn tại đỉnh mở nào: cây biểu diễn vấn đề không tồn tại đường đi tới mục
+tiêu. Dừng (Fail).
+
+Nếu có 2 đỉnh mở trở lên có cùng giá trị f nhỏ nhất: Chúng ta phải kiểm tra xem những
+đỉnh đó có đỉnh nào là đích hay không.
+
++ Nếu có: đường đi từ đỉnh ban đầu đến đỉnh N là ngắn nhất và bằng g(N). Dừng
+(Success).
+
++ Nếu không có: chọn ngẫu nhiên một trong các đỉnh đó và gọi đỉnh đó là N.
+
+.Bước 3:
+
+Đóng đỉnh N, mở mọi đỉnh sau N. Với mỗi đỉnh S sau N, tính:
+
+g(S) = g(N) + cost(S→N)
+
+Sử dụng tri thức bổ sung để tính h(S) và f(S): f(S) = g(S) + h(S)
+
+.Bước 4: Quay lại bước 2.

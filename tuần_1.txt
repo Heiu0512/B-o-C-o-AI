@@ -1,0 +1,6 @@
+- Team bắt đầu lên ý tưởng và đặt các mục tiêu để hoàn thành project
+- Mọi người trong team tự học về python cơ bản
+
+- kết hợp với việc học các thuật toán tìm kiếm
+
+=>> tuần 1 học về các chiến lược tìm kiếm mù, và áp dụng vào code python 
